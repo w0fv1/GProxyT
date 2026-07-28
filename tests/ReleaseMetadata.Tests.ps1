@@ -16,6 +16,19 @@ Describe "gproxyt release metadata" {
         [string]$project.Project.PropertyGroup.EnableCompressionInSingleFile | Should Be "true"
     }
 
+    It "extracts the complete standalone bundle before running" {
+        $buildScript = Get-Content -Raw -Path (Join-Path $projectRoot "build.ps1")
+
+        $buildScript | Should Match ([regex]::Escape("-p:IncludeAllContentForSelfExtract=true"))
+    }
+
+    It "publishes the standalone executable with its public filename" {
+        $releaseScript = Get-Content -Raw -Path (Join-Path $projectRoot "release.ps1")
+
+        $releaseScript | Should Match ([regex]::Escape('$contentDisposition = "Content-Disposition: attachment; filename=`"$($metadata.fileName)`""'))
+        $releaseScript | Should Match ([regex]::Escape('--header $contentDisposition --upload-file $artifactPath'))
+    }
+
     It "derives the README version front matter from the project version" {
         $readmePath = Join-Path $TestDrive "README.md"
         Set-Content -Path $readmePath -Value "# GProxyT" -Encoding UTF8

@@ -25,6 +25,6 @@ if ($LASTEXITCODE -ne 0) {
     --self-contained true `
     --nologo `
     -p:PublishSingleFile=true `
-    -p:IncludeNativeLibrariesForSelfExtract=true `
+    -p:IncludeAllContentForSelfExtract=true `
     -o $publishDirectory
 exit $LASTEXITCODE
