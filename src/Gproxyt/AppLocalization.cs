@@ -7,6 +7,11 @@ using System.Windows;
 
 namespace Gproxyt;
 
+internal sealed record LanguageOption(string Name, string DisplayName)
+{
+    public override string ToString() => DisplayName;
+}
+
 public sealed class AppLocalization : INotifyPropertyChanged
 {
     private static readonly Assembly Assembly = typeof(AppLocalization).Assembly;
@@ -18,6 +23,16 @@ public sealed class AppLocalization : INotifyPropertyChanged
             && name.EndsWith(ResourceSuffix, StringComparison.Ordinal))
         .Select(name => new CultureInfo(name[ResourcePrefix.Length..^ResourceSuffix.Length]))
         .OrderBy(culture => culture.Name, StringComparer.Ordinal)
+        .ToArray();
+    internal static readonly LanguageOption[] SupportedLanguageOptions = SupportedCultures
+        .Select(culture => new LanguageOption(
+            culture.Name,
+            culture.Name switch
+            {
+                "zh-CN" => "简体中文",
+                "zh-TW" => "繁體中文",
+                _ => culture.NativeName
+            }))
         .ToArray();
     private static readonly Dictionary<string, CultureInfo> CulturesByName = SupportedCultures
         .ToDictionary(culture => culture.Name, StringComparer.OrdinalIgnoreCase);

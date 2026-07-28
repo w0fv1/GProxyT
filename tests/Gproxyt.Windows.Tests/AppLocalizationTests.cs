@@ -37,6 +37,18 @@ public sealed class AppLocalizationTests
         }
     }
 
+    [Fact]
+    public void Uses_script_names_for_the_two_Chinese_language_options()
+    {
+        var options = AppLocalization.SupportedLanguageOptions
+            .ToDictionary(option => option.Name, option => option.DisplayName, StringComparer.Ordinal);
+
+        Assert.Equal("简体中文", options["zh-CN"]);
+        Assert.Equal("繁體中文", options["zh-TW"]);
+        Assert.Equal("简体中文", AppLocalization.SupportedLanguageOptions.Single(option => option.Name == "zh-CN").ToString());
+        Assert.Equal("繁體中文", AppLocalization.SupportedLanguageOptions.Single(option => option.Name == "zh-TW").ToString());
+    }
+
     [Theory]
     [InlineData("de-AT", "de-DE")]
     [InlineData("zh-HK", "zh-TW")]

@@ -21,7 +21,7 @@ public partial class SettingsWindow : FluentWindow
         Language = XmlLanguage.GetLanguage(AppLocalization.Current.Culture.IetfLanguageTag);
         ProxyUrlTextBox.Text = settings.ProxyUrl;
         StartWithWindowsToggle.IsChecked = settings.StartWithWindows;
-        LanguageComboBox.ItemsSource = AppLocalization.SupportedCultures;
+        LanguageComboBox.ItemsSource = AppLocalization.SupportedLanguageOptions;
         LanguageComboBox.SelectedValue = AppLocalization.ResolveConfiguredCulture(
             settings.CultureName,
             AppLocalization.Current.Culture).Name;
@@ -45,7 +45,7 @@ public partial class SettingsWindow : FluentWindow
                 ProxyEndpoint.Parse(ProxyUrlTextBox.Text).Value,
                 currentSettings.RestartExisting,
                 StartWithWindowsToggle.IsChecked == true,
-                ((System.Globalization.CultureInfo)LanguageComboBox.SelectedItem).Name);
+                ((LanguageOption)LanguageComboBox.SelectedItem).Name);
             DialogResult = true;
         }
         catch (Exception)

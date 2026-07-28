@@ -77,6 +77,7 @@ public sealed class MainWindowMarkupTests
             .Single(element => (string?)element.Attribute(Xaml + "Name") == "SettingsPanel");
 
         Assert.Equal("{Binding [Language], Source={x:Static local:AppLocalization.Current}}", (string?)languageSelector.Attribute("AutomationProperties.Name"));
+        Assert.Equal("DisplayName", (string?)languageSelector.Attribute("DisplayMemberPath"));
         Assert.Equal("1", (string?)settingsPanel.Attribute("BorderThickness"));
         Assert.Equal("20", (string?)settingsPanel.Attribute("Padding"));
     }
