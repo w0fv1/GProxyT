@@ -54,7 +54,7 @@
                            Height="18"
                            Fill="#FF000000">
                     <Rectangle.OpacityMask>
-                        <ImageBrush ImageSource="Assets/gproxyt.png"
+                        <ImageBrush ImageSource="Assets/gproxyt.ico"
                                     Stretch="Uniform" />
                     </Rectangle.OpacityMask>
                 </Rectangle>

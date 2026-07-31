@@ -6,17 +6,17 @@
 
 ## 定价
 
-目标中国区零售价：¥0.99
+目标中国区零售价：¥1.99
 
 ## 简短描述
 
-为 Microsoft Store ChatGPT 桌面应用提供独立的进程级代理启动，不修改 Windows 系统代理。
+无需系统级代理，让 ChatGPT 单独使用指定代理。
 
 ## 描述
 
-使用 GProxyT 需要先安装 Microsoft Store ChatGPT 桌面应用，并准备用户自行提供的 HTTP、HTTPS 或 SOCKS5 代理。GProxyT 不包含或销售代理服务。
+GProxyT 让 Microsoft Store 版 ChatGPT 单独使用你指定的代理，不修改 Windows 系统代理，也不影响其他应用。
 
-GProxyT 是一款轻量的 Windows 桌面启动工具，为 Microsoft Store ChatGPT 桌面应用及其子进程单独配置代理。
+使用 GProxyT 需要先安装 Microsoft Store ChatGPT 桌面应用，并准备用户自行提供的 HTTP、HTTPS 或 SOCKS5 代理。GProxyT 不包含或销售代理服务。
 
 它不会修改 Windows 系统代理，也不会更改其他应用的网络设置。你可以保存本地代理地址，并通过一个简洁的启动按钮重新打开 ChatGPT。
 
