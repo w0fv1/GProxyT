@@ -77,4 +77,12 @@ Describe "gproxyt release metadata" {
         $readme | Should Match ([regex]::Escape("https://next.firco.cn/release/gproxyt"))
         $releaseScript | Should Match ([regex]::Escape('$baseUrl/release/$($metadata.appKey)'))
     }
+
+    It "uses the canonical release routes" {
+        $releaseScript = Get-Content -Raw -Path (Join-Path $projectRoot "release.ps1")
+
+        $releaseScript | Should Match ([regex]::Escape('/apim/release/$($metadata.appKey)'))
+        $releaseScript | Should Match ([regex]::Escape('/api/release/$($metadata.appKey)'))
+        $releaseScript | Should Not Match ([regex]::Escape('/download/release/'))
+    }
 }
