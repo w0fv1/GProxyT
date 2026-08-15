@@ -36,7 +36,7 @@ winget install Codex -s msstore
 gproxyt.exe --launch
 ```
 
-需要诊断启动问题时添加 `--debug`。日志会写入命令运行时的当前目录，文件名格式为 `gproxyt-debug-yyyyMMdd-HHmmss-PID.log`：
+运行错误和未处理异常会自动记录到 `%LOCALAPPDATA%\gproxyt\logs`。日志按天滚动并自动清理超过 14 天的文件。需要更多启动诊断信息时添加 `--debug`：
 
 ```powershell
 gproxyt.exe --debug --launch
@@ -122,7 +122,7 @@ https://next.firco.cn/release/gproxyt
 
 ## 隐私
 
-GProxyT 不要求创建账户，不收集、上传、出售或共享个人数据。代理设置只保存在当前 Windows 用户的 `%APPDATA%\gproxyt` 目录。只有用户主动使用 `--debug` 时才会在指定的本机目录生成诊断日志，日志不会自动上传。
+GProxyT 不要求创建账户，不收集、上传、出售或共享个人数据。代理设置只保存在当前 Windows 用户的 `%APPDATA%\gproxyt` 目录，错误与诊断日志保存在 `%LOCALAPPDATA%\gproxyt\logs`，不会自动上传。
 
 GProxyT 是独立的第三方工具，与 OpenAI 不存在隶属、赞助或认可关系。ChatGPT 和相关标志归其各自权利人所有。
 

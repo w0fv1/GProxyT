@@ -11,5 +11,10 @@ internal static class AppPaths
 
     public static string SettingsPath { get; } = Path.Combine(DataDirectory, "settings.json");
 
+    public static string LogDirectory { get; } = Path.Combine(
+        Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+        "gproxyt",
+        "logs");
+
     public static LauncherSettingsStore CreateSettingsStore() => new(SettingsPath);
 }

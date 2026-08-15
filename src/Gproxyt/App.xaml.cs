@@ -1,5 +1,6 @@
 using System.Windows;
 using System.Globalization;
+using System.Windows.Threading;
 using Wpf.Ui.Appearance;
 
 namespace Gproxyt;
@@ -16,10 +17,11 @@ public partial class App : Application
         var options = ApplicationOptions.Parse(eventArgs.Args);
         try
         {
+            log = ApplicationLog.Create(options.Debug, AppPaths.LogDirectory);
+            RegisterExceptionLogging();
             var savedSettings = AppPaths.CreateSettingsStore().Load();
             var culture = AppLocalization.ResolveConfiguredCulture(savedSettings.CultureName, CultureInfo.CurrentUICulture);
             AppLocalization.Initialize(culture);
-            log = ApplicationLog.Create(options.Debug, Environment.CurrentDirectory);
             log.Information(
                 "application_started",
                 ("Version", typeof(App).Assembly.GetName().Version?.ToString()),
@@ -96,7 +98,36 @@ public partial class App : Application
     {
         singleInstance?.Dispose();
         log.Information("application_exited", ("ExitCode", eventArgs.ApplicationExitCode));
+        UnregisterExceptionLogging();
         log.Dispose();
         base.OnExit(eventArgs);
     }
+
+    private void RegisterExceptionLogging()
+    {
+        DispatcherUnhandledException += LogDispatcherUnhandledException;
+        AppDomain.CurrentDomain.UnhandledException += LogUnhandledException;
+        TaskScheduler.UnobservedTaskException += LogUnobservedTaskException;
+    }
+
+    private void UnregisterExceptionLogging()
+    {
+        DispatcherUnhandledException -= LogDispatcherUnhandledException;
+        AppDomain.CurrentDomain.UnhandledException -= LogUnhandledException;
+        TaskScheduler.UnobservedTaskException -= LogUnobservedTaskException;
+    }
+
+    private void LogDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs eventArgs) =>
+        log.Error(eventArgs.Exception, "dispatcher_unhandled_exception");
+
+    private void LogUnhandledException(object? sender, UnhandledExceptionEventArgs eventArgs)
+    {
+        if (eventArgs.ExceptionObject is Exception exception)
+        {
+            log.Error(exception, "app_domain_unhandled_exception", ("IsTerminating", eventArgs.IsTerminating));
+        }
+    }
+
+    private void LogUnobservedTaskException(object? sender, UnobservedTaskExceptionEventArgs eventArgs) =>
+        log.Error(eventArgs.Exception, "unobserved_task_exception");
 }

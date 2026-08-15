@@ -1,5 +1,6 @@
 using System.IO;
 using Serilog;
+using Serilog.Events;
 
 namespace Gproxyt;
 
@@ -10,22 +11,20 @@ internal static class ApplicationLog
     public static IApplicationLog Create(bool debug, string directory)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(directory);
-        if (!debug)
-        {
-            return None;
-        }
-
         var fullDirectory = Path.GetFullPath(directory);
         Directory.CreateDirectory(fullDirectory);
-        var path = Path.Combine(
-            fullDirectory,
-            $"gproxyt-debug-{DateTime.Now:yyyyMMdd-HHmmss}-{Environment.ProcessId}.log");
+        var path = Path.Combine(fullDirectory, $"gproxyt-{DateTime.Now:yyyyMMdd}.log");
         var logger = new LoggerConfiguration()
-            .MinimumLevel.Debug()
+            .MinimumLevel.Is(debug ? LogEventLevel.Debug : LogEventLevel.Error)
             .WriteTo.File(
-                path,
+                Path.Combine(fullDirectory, "gproxyt-.log"),
                 outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:lj} {Properties:j}{NewLine}{Exception}",
                 shared: true,
+                rollingInterval: RollingInterval.Day,
+                retainedFileCountLimit: null,
+                retainedFileTimeLimit: TimeSpan.FromDays(14),
+                fileSizeLimitBytes: 10 * 1024 * 1024,
+                rollOnFileSizeLimit: true,
                 flushToDiskInterval: TimeSpan.FromMilliseconds(250))
             .CreateLogger();
         return new SerilogApplicationLog(path, logger);

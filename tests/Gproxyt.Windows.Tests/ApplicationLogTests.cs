@@ -17,7 +17,7 @@ public sealed class ApplicationLogTests : IDisposable
         }
 
         Assert.Equal(root, Path.GetDirectoryName(path));
-        Assert.Matches(@"^gproxyt-debug-\d{8}-\d{6}-\d+\.log$", Path.GetFileName(path));
+        Assert.Matches(@"^gproxyt-\d{8}\.log$", Path.GetFileName(path));
         var content = File.ReadAllText(path);
         Assert.Contains("package_activation_started", content);
         Assert.Contains("OpenAI.Codex_1", content);
@@ -26,15 +26,24 @@ public sealed class ApplicationLogTests : IDisposable
     }
 
     [Fact]
-    public void Create_without_debug_does_not_create_a_log_file()
+    public void Create_without_debug_writes_errors_and_ignores_information()
     {
         Directory.CreateDirectory(root);
-        using var log = ApplicationLog.Create(false, root);
+        string path;
+        using (var log = ApplicationLog.Create(false, root))
+        {
+            path = Assert.IsType<string>(log.FilePath);
+            log.Information("package_activation_started", ("PackageFullName", "OpenAI.Codex_1"));
+            log.Error(new InvalidOperationException("activation failed"), "package_activation_failed");
+        }
 
-        log.Information("ignored");
-
-        Assert.Null(log.FilePath);
-        Assert.Empty(Directory.GetFiles(root));
+        Assert.Equal(root, Path.GetDirectoryName(path));
+        Assert.Matches(@"^gproxyt-\d{8}\.log$", Path.GetFileName(path));
+        var content = File.ReadAllText(path);
+        Assert.DoesNotContain("package_activation_started", content);
+        Assert.DoesNotContain("OpenAI.Codex_1", content);
+        Assert.Contains("package_activation_failed", content);
+        Assert.Contains("activation failed", content);
     }
 
     public void Dispose()
