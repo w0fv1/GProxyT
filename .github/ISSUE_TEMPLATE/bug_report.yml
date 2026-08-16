@@ -1,0 +1,45 @@
+name: Bug report
+description: Report a reproducible problem in GProxyT.
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: Do not include proxy credentials or other sensitive data. Use the private security advisory form for vulnerabilities.
+  - type: input
+    id: version
+    attributes:
+      label: GProxyT version
+      placeholder: 1.7.4-stable
+    validations:
+      required: true
+  - type: input
+    id: windows
+    attributes:
+      label: Windows version
+      placeholder: Windows 11 24H2 x64
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Describe the problem, expected behavior, and exact reproduction steps.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs
+      description: Paste a small redacted excerpt from %LOCALAPPDATA%\gproxyt\logs if available.
+      render: text
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I searched existing issues.
+          required: true
+        - label: I removed proxy credentials and personal information.
+          required: true

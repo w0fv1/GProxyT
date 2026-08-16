@@ -9,9 +9,9 @@ $ErrorActionPreference = "Stop"
 
 $projectRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
 Import-Module (Join-Path $projectRoot "GproxytWorkspace.psm1") -Force
-Import-Module (Join-Path $projectRoot "ReleaseMetadata.psm1") -Force
+Import-Module (Join-Path $projectRoot "ProjectVersion.psm1") -Force
 Import-Module (Join-Path $projectRoot "StorePackaging.psm1") -Force
-$dotnet = Resolve-GproxytDotnet -ProjectRoot $projectRoot
+$dotnet = Resolve-GproxytDotnet
 $winapp = Resolve-WinAppCli -Path $WinAppPath
 $projectPath = Join-Path $projectRoot "src\Gproxyt\Gproxyt.csproj"
 $manifestTemplatePath = Join-Path $projectRoot "packaging\Package.appxmanifest"

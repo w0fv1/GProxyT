@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/w0fv1/gproxyt/security/advisories/new
+    about: Report security vulnerabilities privately.
+  - name: User support
+    url: https://next.firco.cn/gproxyt
+    about: Read the product support information.

@@ -6,7 +6,7 @@ $ErrorActionPreference = "Stop"
 
 $projectRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
 Import-Module (Join-Path $projectRoot "GproxytWorkspace.psm1") -Force
-$dotnet = Resolve-GproxytDotnet -ProjectRoot $projectRoot
+$dotnet = Resolve-GproxytDotnet
 $publishDirectory = if ([string]::IsNullOrWhiteSpace($OutputDirectory)) {
     Join-Path $projectRoot "dist"
 } else {

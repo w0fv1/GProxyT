@@ -1,133 +1,131 @@
 # GProxyT
 
-GProxyT 是 Windows ChatGPT 桌面应用的独立代理启动器。它不修改 Windows 系统代理，通过 Windows 程序包身份启动 ChatGPT，并为 Chromium 网络栈传入代理参数。
+**English** | [简体中文](README.zh-CN.md)
 
-默认代理：
+[![Build](https://github.com/w0fv1/gproxyt/actions/workflows/build.yml/badge.svg)](https://github.com/w0fv1/gproxyt/actions/workflows/build.yml)
+[![GitHub release](https://img.shields.io/github/v/release/w0fv1/gproxyt?include_prereleases)](https://github.com/w0fv1/gproxyt/releases)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-```text
-http://127.0.0.1:7890
-```
+GProxyT is a lightweight Windows launcher that starts the Microsoft Store ChatGPT/Codex desktop app with a process-level proxy. It passes proxy arguments to the app's Chromium network stack without changing the Windows system proxy or affecting other applications.
 
-## 前置条件
+GProxyT is an independent third-party project. It is not affiliated with, sponsored by, or endorsed by OpenAI or Microsoft. ChatGPT, Codex, and related marks belong to their respective owners.
 
-- Windows 10 或 Windows 11 x64
-- Microsoft Store 当前版 ChatGPT/Codex 统一桌面应用
-- 本地 Clash HTTP 或 mixed 代理端口
+![GProxyT main window](packaging/store-assets/zh-CN/01-main-light.png)
 
-不需要管理员权限。GProxyT 通过 Windows 程序包身份和 AUMID 激活官方应用，不直接执行受保护的 `WindowsApps` 文件。
+## Features
 
-官方应用可以使用以下命令安装：
+- HTTP, HTTPS, and SOCKS5 proxy endpoints
+- No system proxy or environment variable changes
+- Package-identity discovery and activation without direct access to protected `WindowsApps` files
+- Optional restart of an existing desktop app process
+- Optional launch at Windows sign-in
+- Desktop shortcut creation
+- Local settings and rotating local logs
+- 20 interface languages, including right-to-left layout for Arabic
+
+The default proxy is `http://127.0.0.1:7890`.
+
+## Requirements
+
+- Windows 10 version 2004 or later, or Windows 11
+- x64 processor
+- The current Microsoft Store ChatGPT/Codex desktop app
+- An HTTP, HTTPS, or SOCKS5 proxy you control or trust
+
+Administrator privileges are not required. Install the official desktop app from Microsoft Store or with:
 
 ```powershell
 winget install Codex -s msstore
 ```
 
-## 使用
+## Install
 
-运行 `gproxyt.exe`，点击窗口中央的启动按钮。
+Choose one distribution:
 
-普通窗口模式为当前 Windows 会话单实例。再次运行时不会创建第二个窗口，而是还原并置前已经打开的 GProxyT。
+- [Microsoft Store](https://apps.microsoft.com/detail/9P3M0G0LP9ZD) for managed installation and updates.
+- [GitHub Releases](https://github.com/w0fv1/gproxyt/releases/latest) for the portable `gproxyt.exe`.
+- [GProxyT download page](https://next.firco.cn/release/gproxyt) for the project-hosted portable build.
 
-右上角设置按钮可以修改代理 URL 和开机自启。开机自启只写入当前用户的 Windows Run 项，并使用 `--launch` 直接通过代理启动 ChatGPT。
+The GitHub executable is currently unsigned, so Windows SmartScreen may ask you to confirm that you trust it. You can verify it against `SHA256SUMS.txt` or `SHA512SUMS.txt` from the same release.
 
-命令行直接启动：
+Run `gproxyt.exe`, review the proxy address in Settings, and select the launch button. Running GProxyT again restores the existing window instead of creating a second instance in the same Windows session.
+
+## Command line
+
+Launch the desktop app immediately:
 
 ```powershell
 gproxyt.exe --launch
 ```
 
-运行错误和未处理异常会自动记录到 `%LOCALAPPDATA%\gproxyt\logs`。日志按天滚动并自动清理超过 14 天的文件。需要更多启动诊断信息时添加 `--debug`：
-
-```powershell
-gproxyt.exe --debug --launch
-```
-
-命令行创建快捷方式：
+Create a desktop shortcut:
 
 ```powershell
 gproxyt.exe --create-shortcut
 ```
 
-配置保存在：
-
-```text
-%APPDATA%\gproxyt\settings.json
-```
-
-## 构建
-
-运行：
+Enable diagnostic logging for the current run:
 
 ```powershell
-.\build.ps1
+gproxyt.exe --debug --launch
 ```
 
-构建流程先执行全部测试，再发布自包含的 Windows x64 单文件版本：
+Settings are stored in `%APPDATA%\gproxyt\settings.json`. Error logs are stored in `%LOCALAPPDATA%\gproxyt\logs`, rotate daily or at 10 MB, and are retained for 14 days. Logs are never uploaded automatically.
+
+## Proxy scope
+
+GProxyT passes Chromium's `--proxy-server` and loopback bypass arguments to the Store app. It does not modify the system proxy or user environment variables.
+
+When restart is enabled, GProxyT only stops processes belonging to the registered `OpenAI.Codex` Store package family. It does not stop VS Code extensions or unrelated Codex installations. Package activation uses the registered package identity and AUMID, so GProxyT does not directly execute protected files under `WindowsApps`.
+
+## Localization
+
+GProxyT follows the Windows display language and falls back to English. The supported languages are Arabic, Brazilian Portuguese, Chinese (Simplified and Traditional), Dutch, English, French, German, Hindi, Indonesian, Italian, Japanese, Korean, Polish, Russian, Spanish, Thai, Turkish, Ukrainian, and Vietnamese.
+
+Localization files are in `src/Gproxyt/Resources/Strings.<culture>.json`. All files must keep the same key set; automated tests enforce this contract.
+
+## Build from source
+
+Install PowerShell 7 and the .NET SDK selected by [`global.json`](global.json), then run on Windows:
+
+```powershell
+./build.ps1
+```
+
+The script runs all .NET and PowerShell tests before publishing a self-contained Windows x64 single-file build:
 
 ```text
 dist\gproxyt.exe
 ```
 
-## Microsoft Store
-
-Microsoft Store 使用与独立版本相同的源码、版本和图像资源生成 x64 MSIX。项目版本 `x.y.z-label` 自动映射为商店版本 `x.y.z.0`，商店身份固定为 `LaiqiInfo.GProxyT`。
-
-产品标识、Partner Center 提交记录、商店链接和发布配置统一维护在 [`packaging/microsoft-store.md`](packaging/microsoft-store.md)。
-
-安装 Windows App Development CLI：
+To create the unsigned Microsoft Store MSIX, install the Windows App Development CLI and run:
 
 ```powershell
 winget install --id Microsoft.WinAppCli --exact --source winget
+./store-build.ps1
 ```
 
-生成提交 Partner Center 的未签名 MSIX：
+Store identity and packaging details are maintained in [`packaging/microsoft-store.md`](packaging/microsoft-store.md).
+
+## Releases
+
+The version is maintained only in `src/Gproxyt/Gproxyt.csproj`. A `v` or `V` tag whose remainder exactly matches that version triggers the release workflow. The tag must point to a commit on `main`.
+
+For example:
 
 ```powershell
-.\store-build.ps1
+git tag v1.7.4-stable
+git push origin v1.7.4-stable
 ```
 
-输出位置：
+The workflow tests and builds the project, creates SHA-256 and SHA-512 checksum files, and publishes all three artifacts to GitHub Releases. Versions not ending in `-stable` are marked as prereleases.
 
-```text
-dist\store\GProxyT_<version>_x64.msix
-```
+## Privacy
 
-商店版使用 Windows 程序包启动任务实现开机自启，独立版本继续使用当前用户的 Windows Run 项。程序包升级不会依赖版本化的安装路径。
+GProxyT requires no account and does not collect, upload, sell, or share personal data. Proxy settings and logs remain under the current Windows user profile. See the public [privacy policy](https://next.firco.cn/gproxyt/privacy) for distribution-specific details.
 
-## 国际化
+## Contributing and security
 
-GProxyT 默认跟随 Windows 显示语言，不支持的语言自动回退到英语。界面、无障碍名称和用户错误提示共享同一组嵌入式本地化资源。
+See [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request. Report vulnerabilities privately as described in [SECURITY.md](SECURITY.md), not through a public issue.
 
-当前支持简体中文、繁体中文、英语、西班牙语、法语、德语、日语、韩语、巴西葡萄牙语、俄语、阿拉伯语、印地语、意大利语、荷兰语、土耳其语、波兰语、印尼语、越南语、泰语和乌克兰语。阿拉伯语使用从右到左布局。
-
-所有语言资源位于 `src/Gproxyt/Resources/Strings.<culture>.json`。英语 `en-US` 是回退语言；新增文本时必须同步更新全部语言文件，测试会校验键集合一致。
-
-i18n 运行库的许可证声明见 [`THIRD-PARTY-NOTICES.md`](THIRD-PARTY-NOTICES.md)。
-
-## 发布
-
-运行：
-
-```powershell
-.\release.ps1
-```
-
-发布脚本会构建 `gproxyt.exe`，计算 SHA-256 和 SHA-512，通过 Nfirco 发布 API 上传公开版本，并回下载线上文件校验哈希。
-
-下载地址：
-
-```text
-https://next.firco.cn/release/gproxyt
-```
-
-## 隐私
-
-GProxyT 不要求创建账户，不收集、上传、出售或共享个人数据。代理设置只保存在当前 Windows 用户的 `%APPDATA%\gproxyt` 目录，错误与诊断日志保存在 `%LOCALAPPDATA%\gproxyt\logs`，不会自动上传。
-
-GProxyT 是独立的第三方工具，与 OpenAI 不存在隶属、赞助或认可关系。ChatGPT 和相关标志归其各自权利人所有。
-
-## 代理范围
-
-启动器传入 Chromium 的 `--proxy-server` 与 loopback bypass 参数，使 ChatGPT 的 Chromium 网络请求使用指定代理。它不修改系统代理和用户环境变量。
-
-启动前关闭进程时，只匹配 `OpenAI.Codex` Store 包族身份，并覆盖更新前后的所有版本；不会终止 VS Code 扩展或其他位置的 Codex 进程。安装位置只从当前用户已注册的主程序包解析，不会误用仅完成 Stage 的待更新版本。
+Third-party license information is in [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md). GProxyT is released under the [MIT License](LICENSE).

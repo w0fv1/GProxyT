@@ -4,3 +4,4 @@ obj/
 dist/
 *.user
 *.suo
+/release_nfirco.ps1

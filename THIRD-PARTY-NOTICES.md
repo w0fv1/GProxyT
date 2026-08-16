@@ -1,15 +1,21 @@
-# GProxyT 第三方软件声明
+# GProxyT Third-Party Notices
 
-GProxyT 使用以下开源软件。各组件仍受其原始许可证约束。
+GProxyT distributes the following third-party packages. Each package remains subject to its original license.
 
-## Lepo.i18n
+| Package | Version | Project | License |
+| --- | --- | --- | --- |
+| Serilog | 4.4.0 | <https://github.com/serilog/serilog> | Apache-2.0 |
+| Serilog.Sinks.File | 7.0.0 | <https://github.com/serilog/serilog-sinks-file> | Apache-2.0 |
+| WPF-UI | 4.3.0 | <https://github.com/lepoco/wpfui> | MIT |
+| WPF-UI.Abstractions | 4.3.0 | <https://github.com/lepoco/wpfui> | MIT |
 
-- 组件：`Lepo.i18n.Json`、`Lepo.i18n.Wpf`
-- 版本：2.1.0
-- 项目：<https://github.com/lepoco/i18n>
-- 许可证：MIT
+Serilog and Serilog.Sinks.File are licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).
 
-Copyright (c) Leszek Pomianowski and contributors
+WPF-UI includes additional notices for VirtualizingWrapPanel, Fluent UI System Icons, .NET WPF, Microsoft UI XAML, and Segoe Fluent Icons. The authoritative notice distributed with WPF-UI 4.3.0 is available in the [WPF-UI NuGet package](https://www.nuget.org/packages/WPF-UI/4.3.0) as `ThirdPartyNotices.txt`.
+
+## WPF-UI MIT License
+
+Copyright (c) 2021-2025 Leszek Pomianowski and WPF UI Contributors. https://lepo.co/
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files, to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
