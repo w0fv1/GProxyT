@@ -7,7 +7,7 @@
   "Language": "Мова інтерфейсу",
   "LanguageDescription": "Виберіть мову, яку використовує GProxyT",
   "LaunchChatGpt": "Відкрити ChatGPT",
-  "LaunchFailed": "GProxyT не вдалося запустити ChatGPT. Переконайтеся, що програму ChatGPT з Microsoft Store встановлено, і повторіть спробу.",
+  "LaunchFailed": "GProxyT не вдалося запустити ChatGPT. Перегляньте подробиці помилки нижче.",
   "LaunchHint": "Відкривайте ChatGPT лише через свій проксі.",
   "CurrentProxy": "Поточний проксі: {0}",
   "Minimize": "Згорнути",

@@ -20,6 +20,8 @@ internal sealed class ApplicationRuntime
 
     public EnvironmentDiagnostics Diagnostics { get; }
 
+    public string FormatLaunchFailure(Exception exception) => LaunchFailureMessage.Format(exception, log.FilePath);
+
     public LauncherSettings LoadSettings()
     {
         var settings = settingsStore.Load();

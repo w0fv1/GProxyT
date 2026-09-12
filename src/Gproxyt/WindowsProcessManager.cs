@@ -7,7 +7,8 @@ internal sealed class WindowsProcessManager : IProcessManager
 {
     private const int StartupStabilityMilliseconds = 1500;
     private const int PackageTerminationTimeoutMilliseconds = 10000;
-    private const int WindowVisibilityTimeoutMilliseconds = 10000;
+    // A cold start immediately after a Store update can take longer than ten seconds.
+    private const int WindowVisibilityTimeoutMilliseconds = 30000;
     private readonly IWindowsPackageActivationApi activationApi;
     private readonly IApplicationLog log;
 

@@ -7,7 +7,7 @@
   "Language": "Lingua dell’interfaccia",
   "LanguageDescription": "Scegli la lingua utilizzata da GProxyT",
   "LaunchChatGpt": "Apri ChatGPT",
-  "LaunchFailed": "GProxyT non è riuscito ad avviare ChatGPT. Verifica che l'app ChatGPT di Microsoft Store sia installata e riprova.",
+  "LaunchFailed": "GProxyT non è riuscito ad avviare ChatGPT. Consulta i dettagli dell’errore qui sotto.",
   "LaunchHint": "Apri ChatGPT esclusivamente tramite il tuo proxy.",
   "CurrentProxy": "Proxy corrente: {0}",
   "Minimize": "Riduci a icona",

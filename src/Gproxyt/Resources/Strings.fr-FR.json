@@ -7,7 +7,7 @@
   "Language": "Langue d’affichage",
   "LanguageDescription": "Choisissez la langue utilisée par GProxyT",
   "LaunchChatGpt": "Ouvrir ChatGPT",
-  "LaunchFailed": "GProxyT n’a pas pu démarrer ChatGPT. Vérifiez que l’application ChatGPT du Microsoft Store est installée, puis réessayez.",
+  "LaunchFailed": "GProxyT n’a pas pu démarrer ChatGPT. Consultez les détails de l’erreur ci-dessous.",
   "LaunchHint": "Ouvrez ChatGPT uniquement via votre proxy.",
   "CurrentProxy": "Proxy actuel : {0}",
   "Minimize": "Réduire",

@@ -7,7 +7,7 @@
   "Language": "界面语言",
   "LanguageDescription": "选择 GProxyT 使用的显示语言",
   "LaunchChatGpt": "打开 ChatGPT",
-  "LaunchFailed": "GProxyT 无法启动 ChatGPT，请确认已安装 Microsoft Store ChatGPT 后重试。",
+  "LaunchFailed": "GProxyT 无法启动 ChatGPT，请查看下方的具体错误。",
   "LaunchHint": "仅通过你的代理打开 ChatGPT。",
   "CurrentProxy": "当前代理：{0}",
   "Minimize": "最小化",

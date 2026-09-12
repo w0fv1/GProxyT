@@ -7,7 +7,7 @@
   "Language": "Bahasa tampilan",
   "LanguageDescription": "Pilih bahasa yang digunakan GProxyT",
   "LaunchChatGpt": "Buka ChatGPT",
-  "LaunchFailed": "GProxyT tidak dapat memulai ChatGPT. Pastikan aplikasi ChatGPT Microsoft Store telah terpasang lalu coba lagi.",
+  "LaunchFailed": "GProxyT tidak dapat memulai ChatGPT. Lihat detail kesalahan di bawah.",
   "LaunchHint": "Buka ChatGPT hanya melalui proksi Anda.",
   "CurrentProxy": "Proksi saat ini: {0}",
   "Minimize": "Minimalkan",

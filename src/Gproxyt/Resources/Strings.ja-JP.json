@@ -7,7 +7,7 @@
   "Language": "表示言語",
   "LanguageDescription": "GProxyT で使用する言語を選択します",
   "LaunchChatGpt": "ChatGPT を開く",
-  "LaunchFailed": "GProxyT は ChatGPT を起動できませんでした。Microsoft Store 版 ChatGPT がインストールされていることを確認して、もう一度お試しください。",
+  "LaunchFailed": "GProxyT は ChatGPT を起動できませんでした。以下のエラーの詳細を確認してください。",
   "LaunchHint": "ChatGPT のみをプロキシ経由で開きます。",
   "CurrentProxy": "現在のプロキシ: {0}",
   "Minimize": "最小化",

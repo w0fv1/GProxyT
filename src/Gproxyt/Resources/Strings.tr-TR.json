@@ -7,7 +7,7 @@
   "Language": "Görüntüleme dili",
   "LanguageDescription": "GProxyT tarafından kullanılan dili seçin",
   "LaunchChatGpt": "ChatGPT'yi aç",
-  "LaunchFailed": "GProxyT, ChatGPT'yi başlatamadı. Microsoft Store ChatGPT uygulamasının yüklü olduğunu kontrol edip yeniden deneyin.",
+  "LaunchFailed": "GProxyT, ChatGPT'yi başlatamadı. Aşağıdaki hata ayrıntılarına bakın.",
   "LaunchHint": "ChatGPT'yi yalnızca proxy'niz üzerinden açın.",
   "CurrentProxy": "Geçerli proxy: {0}",
   "Minimize": "Simge durumuna küçült",
