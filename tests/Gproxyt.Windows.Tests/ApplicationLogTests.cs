@@ -26,7 +26,7 @@ public sealed class ApplicationLogTests : IDisposable
     }
 
     [Fact]
-    public void Create_without_debug_writes_errors_and_ignores_information()
+    public void Create_without_debug_writes_errors_and_information()
     {
         Directory.CreateDirectory(root);
         string path;
@@ -40,8 +40,8 @@ public sealed class ApplicationLogTests : IDisposable
         Assert.Equal(root, Path.GetDirectoryName(path));
         Assert.Matches(@"^gproxyt-\d{8}\.log$", Path.GetFileName(path));
         var content = File.ReadAllText(path);
-        Assert.DoesNotContain("package_activation_started", content);
-        Assert.DoesNotContain("OpenAI.Codex_1", content);
+        Assert.Contains("package_activation_started", content);
+        Assert.Contains("OpenAI.Codex_1", content);
         Assert.Contains("package_activation_failed", content);
         Assert.Contains("activation failed", content);
     }

@@ -52,7 +52,7 @@
                 <Rectangle x:Name="HeaderBrandLogo"
                            Width="18"
                            Height="18"
-                           Fill="#FF000000">
+                           Fill="{Binding Foreground, ElementName=HeaderBrandTitle}">
                     <Rectangle.OpacityMask>
                         <ImageBrush ImageSource="Assets/gproxyt.ico"
                                     Stretch="Uniform" />
@@ -71,17 +71,17 @@
                         AutomationProperties.Name="{Binding [Settings], Source={x:Static local:AppLocalization.Current}}"
                         Click="OpenSettings">
                     <ui:SymbolIcon Symbol="Settings24"
-                                   FontSize="21" />
+                                   FontSize="21" Foreground="{Binding Foreground, ElementName=HeaderBrandTitle}" />
                 </Button>
                 <Button Style="{StaticResource HeaderIconButtonStyle}"
                         AutomationProperties.Name="{Binding [Minimize], Source={x:Static local:AppLocalization.Current}}"
                         Click="MinimizeWindow">
-                    <ui:SymbolIcon Symbol="Subtract24" FontSize="20" />
+                    <ui:SymbolIcon Symbol="Subtract24" Foreground="{Binding Foreground, ElementName=HeaderBrandTitle}" FontSize="20" />
                 </Button>
                 <Button Style="{StaticResource HeaderIconButtonStyle}"
                         AutomationProperties.Name="{Binding [Close], Source={x:Static local:AppLocalization.Current}}"
                         Click="CloseWindow">
-                    <ui:SymbolIcon Symbol="Dismiss24" FontSize="21" />
+                    <ui:SymbolIcon Symbol="Dismiss24" FontSize="21" Foreground="{Binding Foreground, ElementName=HeaderBrandTitle}" />
                 </Button>
             </StackPanel>
         </Grid>

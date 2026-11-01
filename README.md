@@ -66,7 +66,7 @@ Create a desktop shortcut:
 gproxyt.exe --create-shortcut
 ```
 
-Enable diagnostic logging for the current run:
+Startup steps, errors, and unhandled exceptions are logged automatically to `%LOCALAPPDATA%\gproxyt\logs`. Failure logs include the stage, elapsed time, exception details, and Windows error code. The `--debug` option remains available:
 
 ```powershell
 gproxyt.exe --debug --launch

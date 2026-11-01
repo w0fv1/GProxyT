@@ -59,7 +59,7 @@ GitHub 提供的 EXE 目前没有代码签名，因此 Windows SmartScreen 可�
 gproxyt.exe --launch
 ```
 
-运行错误和未处理异常会自动记录到 `%LOCALAPPDATA%\gproxyt\logs`。日志按天或达到 10 MB 时滚动，并自动清理超过 14 天的文件。需要更多启动诊断信息时添加 `--debug`：
+启动步骤、运行错误和未处理异常会自动记录到 `%LOCALAPPDATA%\gproxyt\logs`。日志按天或达到 10 MB 时滚动，并自动清理超过 14 天的文件。失败日志包含执行阶段、耗时、异常详情和 Windows 错误码。`--debug` 参数仍可使用：
 
 ```powershell
 gproxyt.exe --debug --launch
