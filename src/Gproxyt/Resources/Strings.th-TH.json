@@ -19,5 +19,5 @@
   "SettingsSaveFailed": "GProxyT ไม่สามารถบันทึกการตั้งค่าได้ โปรดตรวจสอบที่อยู่พร็อกซีแล้วลองอีกครั้ง",
   "StartWithWindows": "เริ่มพร้อม Windows",
   "StartWithWindowsDescription": "เปิด ChatGPT อัตโนมัติหลังจากลงชื่อเข้าใช้ Windows",
-  "StartupFailed": "GProxyT ไม่สามารถเริ่มทำงานได้ โปรดเริ่มแอปใหม่หรือติดตั้งใหม่"
+  "StartupFailed": "GProxyT ไม่สามารถเริ่มทำงานได้"
 }

@@ -19,5 +19,5 @@
   "SettingsSaveFailed": "تعذر على GProxyT حفظ الإعدادات. تحقق من عنوان الوكيل وحاول مرة أخرى.",
   "StartWithWindows": "التشغيل مع Windows",
   "StartWithWindowsDescription": "فتح ChatGPT تلقائيًا بعد تسجيل الدخول إلى Windows",
-  "StartupFailed": "تعذر تشغيل GProxyT. أعد تشغيل التطبيق أو ثبّته من جديد."
+  "StartupFailed": "تعذر تشغيل GProxyT"
 }

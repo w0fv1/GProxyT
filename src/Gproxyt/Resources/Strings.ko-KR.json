@@ -19,5 +19,5 @@
   "SettingsSaveFailed": "GProxyT에서 설정을 저장하지 못했습니다. 프록시 주소를 확인하고 다시 시도하세요.",
   "StartWithWindows": "Windows 시작 시 실행",
   "StartWithWindowsDescription": "Windows 로그인 후 ChatGPT 자동 열기",
-  "StartupFailed": "GProxyT를 시작하지 못했습니다. 앱을 다시 시작하거나 재설치하세요."
+  "StartupFailed": "GProxyT를 시작하지 못했습니다"
 }

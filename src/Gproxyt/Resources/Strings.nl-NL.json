@@ -19,5 +19,5 @@
   "SettingsSaveFailed": "GProxyT kon de instellingen niet opslaan. Controleer het proxyadres en probeer het opnieuw.",
   "StartWithWindows": "Starten met Windows",
   "StartWithWindowsDescription": "ChatGPT automatisch openen nadat je je bij Windows aanmeldt",
-  "StartupFailed": "GProxyT kon niet worden gestart. Start de app opnieuw of installeer deze opnieuw."
+  "StartupFailed": "GProxyT kon niet worden gestart"
 }

@@ -19,5 +19,5 @@
   "SettingsSaveFailed": "GProxyT सेटिंग्स सहेज नहीं सका। प्रॉक्सी पता जाँचें और फिर प्रयास करें।",
   "StartWithWindows": "Windows के साथ शुरू करें",
   "StartWithWindowsDescription": "Windows में साइन इन करने के बाद ChatGPT अपने आप खोलें",
-  "StartupFailed": "GProxyT शुरू नहीं हो सका। ऐप पुनः शुरू करें या दोबारा इंस्टॉल करें।"
+  "StartupFailed": "GProxyT शुरू नहीं हो सका"
 }

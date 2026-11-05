@@ -19,5 +19,5 @@
   "SettingsSaveFailed": "GProxyT tidak dapat menyimpan pengaturan. Periksa alamat proksi dan coba lagi.",
   "StartWithWindows": "Mulai bersama Windows",
   "StartWithWindowsDescription": "Buka ChatGPT otomatis setelah masuk ke Windows",
-  "StartupFailed": "GProxyT tidak dapat dimulai. Mulai ulang atau instal ulang aplikasi."
+  "StartupFailed": "GProxyT tidak dapat dimulai"
 }

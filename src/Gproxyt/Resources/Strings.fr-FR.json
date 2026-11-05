@@ -19,5 +19,5 @@
   "SettingsSaveFailed": "GProxyT n’a pas pu enregistrer les paramètres. Vérifiez l’adresse du proxy et réessayez.",
   "StartWithWindows": "Démarrer avec Windows",
   "StartWithWindowsDescription": "Ouvrir automatiquement ChatGPT après la connexion à Windows",
-  "StartupFailed": "GProxyT n’a pas pu démarrer. Redémarrez l’application ou réinstallez-la."
+  "StartupFailed": "GProxyT n’a pas pu démarrer"
 }

@@ -19,5 +19,5 @@
   "SettingsSaveFailed": "GProxyT 无法保存设置，请检查代理地址后重试。",
   "StartWithWindows": "开机自启",
   "StartWithWindowsDescription": "登录 Windows 后自动打开 ChatGPT",
-  "StartupFailed": "GProxyT 无法启动，请重启应用或重新安装。"
+  "StartupFailed": "GProxyT 无法启动"
 }
