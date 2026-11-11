@@ -47,6 +47,8 @@ GitHub 提供的 EXE 目前没有代码签名，因此 Windows SmartScreen 可�
 
 运行 `gproxyt.exe`，点击窗口中央的启动按钮。
 
+启动时最多等待 30 秒让 ChatGPT 窗口出现，以适应更新后的较慢启动。如果启动失败，错误对话框会显示具体原因和日志文件路径；启动失败不一定表示未安装 ChatGPT。
+
 普通窗口模式为当前 Windows 会话单实例。再次运行时不会创建第二个窗口，而是还原并置前已经打开的 GProxyT。
 
 右上角设置按钮可以修改代理 URL 和开机自启。开机自启只写入当前用户的 Windows Run 项，并使用 `--launch` 直接通过代理启动 ChatGPT。
@@ -57,7 +59,7 @@ GitHub 提供的 EXE 目前没有代码签名，因此 Windows SmartScreen 可�
 gproxyt.exe --launch
 ```
 
-运行错误和未处理异常会自动记录到 `%LOCALAPPDATA%\gproxyt\logs`。日志按天或达到 10 MB 时滚动，并自动清理超过 14 天的文件。需要更多启动诊断信息时添加 `--debug`：
+启动步骤、运行错误和未处理异常会自动记录到 `%LOCALAPPDATA%\gproxyt\logs`。日志按天或达到 10 MB 时滚动，并自动清理超过 14 天的文件。失败日志包含执行阶段、耗时、异常详情和 Windows 错误码。`--debug` 参数仍可使用：
 
 ```powershell
 gproxyt.exe --debug --launch

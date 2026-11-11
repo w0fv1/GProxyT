@@ -7,7 +7,8 @@ internal sealed class WindowsProcessManager : IProcessManager
 {
     private const int StartupStabilityMilliseconds = 1500;
     private const int PackageTerminationTimeoutMilliseconds = 10000;
-    private const int WindowVisibilityTimeoutMilliseconds = 10000;
+    // A cold start immediately after a Store update can take longer than ten seconds.
+    private const int WindowVisibilityTimeoutMilliseconds = 30000;
     private readonly IWindowsPackageActivationApi activationApi;
     private readonly IApplicationLog log;
 
@@ -48,6 +49,7 @@ internal sealed class WindowsProcessManager : IProcessManager
         catch (Exception exception) when (
             exception is Win32Exception or InvalidOperationException or System.Runtime.InteropServices.COMException)
         {
+            log.Error(exception, "package_termination_failed", ("PackageFullName", installation.PackageFullName), ("HResult", exception.HResult));
             throw new InvalidOperationException($"无法关闭现有 ChatGPT 进程：{exception.Message}", exception);
         }
     }
@@ -62,7 +64,8 @@ internal sealed class WindowsProcessManager : IProcessManager
                 "package_activation_started",
                 ("PackageFullName", installation.PackageFullName),
                 ("AppUserModelId", installation.AppUserModelId),
-                ("ArgumentCount", plan.Arguments.Count));
+                ("ArgumentCount", plan.Arguments.Count),
+                ("WindowTimeoutMilliseconds", WindowVisibilityTimeoutMilliseconds));
             var processId = activationApi.ActivateApplication(
                 installation.AppUserModelId,
                 string.Join(' ', plan.Arguments));
@@ -96,6 +99,7 @@ internal sealed class WindowsProcessManager : IProcessManager
         catch (Exception exception) when (
             exception is Win32Exception or InvalidOperationException or System.Runtime.InteropServices.COMException)
         {
+            log.Error(exception, "package_activation_failed", ("AppUserModelId", installation.AppUserModelId), ("HResult", exception.HResult));
             throw new PackageLaunchTargetUnavailableException($"无法启动 ChatGPT：{exception.Message}", exception);
         }
     }

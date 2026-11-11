@@ -15,7 +15,7 @@ internal static class ApplicationLog
         Directory.CreateDirectory(fullDirectory);
         var path = Path.Combine(fullDirectory, $"gproxyt-{DateTime.Now:yyyyMMdd}.log");
         var logger = new LoggerConfiguration()
-            .MinimumLevel.Is(debug ? LogEventLevel.Debug : LogEventLevel.Error)
+            .MinimumLevel.Is(debug ? LogEventLevel.Debug : LogEventLevel.Information)
             .WriteTo.File(
                 Path.Combine(fullDirectory, "gproxyt-.log"),
                 outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:lj} {Properties:j}{NewLine}{Exception}",

@@ -7,7 +7,7 @@
   "Language": "ภาษาที่แสดง",
   "LanguageDescription": "เลือกภาษาที่ GProxyT ใช้",
   "LaunchChatGpt": "เปิด ChatGPT",
-  "LaunchFailed": "GProxyT ไม่สามารถเริ่ม ChatGPT ได้ โปรดตรวจสอบว่าติดตั้งแอป ChatGPT จาก Microsoft Store แล้วลองอีกครั้ง",
+  "LaunchFailed": "GProxyT ไม่สามารถเริ่ม ChatGPT ได้ โปรดดูรายละเอียดข้อผิดพลาดด้านล่าง",
   "LaunchHint": "เปิด ChatGPT ผ่านพร็อกซีของคุณเท่านั้น",
   "CurrentProxy": "พร็อกซีปัจจุบัน: {0}",
   "Minimize": "ย่อเล็กสุด",
@@ -19,5 +19,5 @@
   "SettingsSaveFailed": "GProxyT ไม่สามารถบันทึกการตั้งค่าได้ โปรดตรวจสอบที่อยู่พร็อกซีแล้วลองอีกครั้ง",
   "StartWithWindows": "เริ่มพร้อม Windows",
   "StartWithWindowsDescription": "เปิด ChatGPT อัตโนมัติหลังจากลงชื่อเข้าใช้ Windows",
-  "StartupFailed": "GProxyT ไม่สามารถเริ่มทำงานได้ โปรดเริ่มแอปใหม่หรือติดตั้งใหม่"
+  "StartupFailed": "GProxyT ไม่สามารถเริ่มทำงานได้"
 }

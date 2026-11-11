@@ -50,6 +50,8 @@ The GitHub executable is currently unsigned, so Windows SmartScreen may ask you 
 
 Run `gproxyt.exe`, review the proxy address in Settings, and select the launch button. Running GProxyT again restores the existing window instead of creating a second instance in the same Windows session.
 
+GProxyT waits up to 30 seconds for the ChatGPT window to appear, allowing for slower startup after an update. If launch fails, the error dialog shows the specific reason and log file path; a launch failure does not necessarily mean ChatGPT is missing.
+
 ## Command line
 
 Launch the desktop app immediately:
@@ -64,7 +66,7 @@ Create a desktop shortcut:
 gproxyt.exe --create-shortcut
 ```
 
-Enable diagnostic logging for the current run:
+Startup steps, errors, and unhandled exceptions are logged automatically to `%LOCALAPPDATA%\gproxyt\logs`. Failure logs include the stage, elapsed time, exception details, and Windows error code. The `--debug` option remains available:
 
 ```powershell
 gproxyt.exe --debug --launch

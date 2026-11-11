@@ -7,7 +7,7 @@
   "Language": "Weergavetaal",
   "LanguageDescription": "Kies de taal die GProxyT gebruikt",
   "LaunchChatGpt": "ChatGPT openen",
-  "LaunchFailed": "GProxyT kon ChatGPT niet starten. Controleer of de Microsoft Store ChatGPT-app is geïnstalleerd en probeer het opnieuw.",
+  "LaunchFailed": "GProxyT kon ChatGPT niet starten. Bekijk de foutdetails hieronder.",
   "LaunchHint": "Open ChatGPT alleen via je proxy.",
   "CurrentProxy": "Huidige proxy: {0}",
   "Minimize": "Minimaliseren",
@@ -19,5 +19,5 @@
   "SettingsSaveFailed": "GProxyT kon de instellingen niet opslaan. Controleer het proxyadres en probeer het opnieuw.",
   "StartWithWindows": "Starten met Windows",
   "StartWithWindowsDescription": "ChatGPT automatisch openen nadat je je bij Windows aanmeldt",
-  "StartupFailed": "GProxyT kon niet worden gestart. Start de app opnieuw of installeer deze opnieuw."
+  "StartupFailed": "GProxyT kon niet worden gestart"
 }

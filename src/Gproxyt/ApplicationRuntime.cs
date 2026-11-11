@@ -20,6 +20,8 @@ internal sealed class ApplicationRuntime
 
     public EnvironmentDiagnostics Diagnostics { get; }
 
+    public string FormatLaunchFailure(Exception exception) => LaunchFailureMessage.Format(exception, log.FilePath);
+
     public LauncherSettings LoadSettings()
     {
         var settings = settingsStore.Load();
@@ -46,9 +48,13 @@ internal sealed class ApplicationRuntime
 
     public async Task<LaunchResult> LaunchAsync(LauncherSettings settings)
     {
+        var elapsed = System.Diagnostics.Stopwatch.StartNew();
+        var stage = "save_settings";
         try
         {
+            log.Information("launch_requested");
             var normalized = await SaveSettingsAsync(settings);
+            stage = "parse_proxy";
             var proxy = ProxyEndpoint.Parse(normalized.ProxyUrl);
             var uri = new Uri(proxy.Value);
             log.Information(
@@ -57,8 +63,10 @@ internal sealed class ApplicationRuntime
                 ("ProxyHost", uri.Host),
                 ("ProxyPort", uri.Port),
                 ("RestartExisting", normalized.RestartExisting));
+            stage = "check_proxy";
             await Diagnostics.EnsureProxyReachableAsync(proxy);
             log.Information("proxy_reachable");
+            stage = "launch_package";
             var result = await launcher.LaunchAsync(normalized);
             log.Information(
                 "launch_completed",
@@ -69,7 +77,7 @@ internal sealed class ApplicationRuntime
         }
         catch (Exception exception)
         {
-            log.Error(exception, "launch_failed");
+            log.Error(exception, "launch_failed", ("Stage", stage), ("ElapsedMilliseconds", elapsed.ElapsedMilliseconds), ("HResult", exception.HResult));
             throw;
         }
     }

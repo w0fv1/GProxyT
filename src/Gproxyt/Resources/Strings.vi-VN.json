@@ -7,7 +7,7 @@
   "Language": "Ngôn ngữ hiển thị",
   "LanguageDescription": "Chọn ngôn ngữ GProxyT sử dụng",
   "LaunchChatGpt": "Mở ChatGPT",
-  "LaunchFailed": "GProxyT không thể khởi động ChatGPT. Hãy kiểm tra ứng dụng ChatGPT từ Microsoft Store đã được cài đặt rồi thử lại.",
+  "LaunchFailed": "GProxyT không thể khởi động ChatGPT. Xem chi tiết lỗi bên dưới.",
   "LaunchHint": "Chỉ mở ChatGPT qua proxy của bạn.",
   "CurrentProxy": "Proxy hiện tại: {0}",
   "Minimize": "Thu nhỏ",
@@ -19,5 +19,5 @@
   "SettingsSaveFailed": "GProxyT không thể lưu cài đặt. Hãy kiểm tra địa chỉ proxy rồi thử lại.",
   "StartWithWindows": "Khởi động cùng Windows",
   "StartWithWindowsDescription": "Tự động mở ChatGPT sau khi đăng nhập Windows",
-  "StartupFailed": "GProxyT không thể khởi động. Hãy khởi động lại hoặc cài đặt lại ứng dụng."
+  "StartupFailed": "GProxyT không thể khởi động"
 }

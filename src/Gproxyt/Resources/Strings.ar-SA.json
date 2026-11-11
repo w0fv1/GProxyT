@@ -7,7 +7,7 @@
   "Language": "لغة العرض",
   "LanguageDescription": "اختر اللغة التي يستخدمها GProxyT",
   "LaunchChatGpt": "فتح ChatGPT",
-  "LaunchFailed": "تعذر على GProxyT تشغيل ChatGPT. تأكد من تثبيت تطبيق ChatGPT من Microsoft Store ثم حاول مجددًا.",
+  "LaunchFailed": "تعذر على GProxyT تشغيل ChatGPT. راجع تفاصيل الخطأ أدناه.",
   "LaunchHint": "افتح ChatGPT عبر وكيلك فقط.",
   "CurrentProxy": "الوكيل الحالي: {0}",
   "Minimize": "تصغير",
@@ -19,5 +19,5 @@
   "SettingsSaveFailed": "تعذر على GProxyT حفظ الإعدادات. تحقق من عنوان الوكيل وحاول مرة أخرى.",
   "StartWithWindows": "التشغيل مع Windows",
   "StartWithWindowsDescription": "فتح ChatGPT تلقائيًا بعد تسجيل الدخول إلى Windows",
-  "StartupFailed": "تعذر تشغيل GProxyT. أعد تشغيل التطبيق أو ثبّته من جديد."
+  "StartupFailed": "تعذر تشغيل GProxyT"
 }

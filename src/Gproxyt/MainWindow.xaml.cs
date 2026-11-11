@@ -94,9 +94,9 @@ public partial class MainWindow : FluentWindow
                 MessageBoxButton.OK,
                 MessageBoxImage.Warning);
         }
-        catch (Exception)
+        catch (Exception exception)
         {
-            MessageBox.Show(this, AppLocalization.Current["LaunchFailed"], "GProxyT", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show(this, runtime.FormatLaunchFailure(exception), "GProxyT", MessageBoxButton.OK, MessageBoxImage.Error);
         }
         finally
         {

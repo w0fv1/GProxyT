@@ -7,7 +7,7 @@
   "Language": "介面語言",
   "LanguageDescription": "選擇 GProxyT 使用的顯示語言",
   "LaunchChatGpt": "開啟 ChatGPT",
-  "LaunchFailed": "GProxyT 無法啟動 ChatGPT，請確認已安裝 Microsoft Store ChatGPT 後再試一次。",
+  "LaunchFailed": "GProxyT 無法啟動 ChatGPT，請查看下方的詳細錯誤。",
   "LaunchHint": "僅透過你的 Proxy 開啟 ChatGPT。",
   "CurrentProxy": "目前的 Proxy：{0}",
   "Minimize": "最小化",
@@ -19,5 +19,5 @@
   "SettingsSaveFailed": "GProxyT 無法儲存設定，請檢查 Proxy 位址後再試一次。",
   "StartWithWindows": "隨 Windows 啟動",
   "StartWithWindowsDescription": "登入 Windows 後自動開啟 ChatGPT",
-  "StartupFailed": "GProxyT 無法啟動，請重新啟動應用程式或重新安裝。"
+  "StartupFailed": "GProxyT 無法啟動"
 }

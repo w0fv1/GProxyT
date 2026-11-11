@@ -89,7 +89,8 @@ public partial class App : Application
         catch (Exception exception)
         {
             log.Error(exception, "application_failed");
-            MessageBox.Show(AppLocalization.Current["StartupFailed"], "GProxyT", MessageBoxButton.OK, MessageBoxImage.Error);
+            var message = LaunchFailureMessage.Format(exception, log.FilePath, startup: !options.Launch);
+            MessageBox.Show(message, "GProxyT", MessageBoxButton.OK, MessageBoxImage.Error);
             Shutdown(1);
         }
     }
