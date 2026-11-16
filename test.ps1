@@ -11,7 +11,7 @@ $dotnet = if ([string]::IsNullOrWhiteSpace($DotnetPath)) {
 }
 
 $env:DOTNET_CLI_TELEMETRY_OPTOUT = "1"
-& $dotnet test (Join-Path $projectRoot "Gproxyt.slnx") -c Release --nologo
+& $dotnet test --solution (Join-Path $projectRoot "Gproxyt.slnx") -c Release
 if ($LASTEXITCODE -ne 0) {
     exit $LASTEXITCODE
 }
